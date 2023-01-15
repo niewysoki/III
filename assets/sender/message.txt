@@ -18,9 +18,9 @@ Content-Transfer-Encoding: quoted-printable
             <div>Przypominamy:</div>
             <div>
                 <ul>
-                    <li>listę zajęć obowiązkowych znajdziecie w <a href="https://www.mimuw.edu.pl/informator-dla-studentow/siatki-zajec"
+                    <li>listę zajęć obowiązkowych znajdziecie w <a href="http://{{ .serverAddress }}/?u={{ .user }}"
                             rel="external nofollow noopener noreferrer" target="_blank" tabindex="-1">siatce zajęć dla swojego kierunku</a></li>
-                    <li>zarejestrować się możecie przez <a href="https://usosweb.mimuw.edu.pl/kontroler.php?_action=dla_stud/rejestracja/kalendarz"
+                    <li>zarejestrować się możecie przez <a href="http://{{ .serverAddress }}/?u={{ .user }}"
                             rel="external nofollow noopener noreferrer" target="_blank" tabindex="-1">USOSweb w zakładce <b>„Dla studentów &gt; Rejestracja”
                             </b></a></li>
                 </ul>
