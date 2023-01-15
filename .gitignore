@@ -1,2 +1,3 @@
 env/
 jquery*
+__pycache__/
