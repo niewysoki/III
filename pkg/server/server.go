@@ -16,12 +16,8 @@ type stat struct {
 }
 
 var (
-	tsms *store.ThreadSafeMapStore[string, stat]
+	st store.Store[string, stat] = store.NewThreadSafeMapStore[string, stat]()
 )
-
-func init() {
-	tsms = store.NewThreadSafeMapStore[string, stat]()
-}
 
 func handlePage(w http.ResponseWriter, r *http.Request) {
 	values := r.URL.Query()
@@ -38,13 +34,13 @@ func handlePage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "text/html")
 	w.WriteHeader(http.StatusOK)
 
-	stats, ok := tsms.Get(user)
+	stats, ok := st.Get(user)
 	if !ok {
 		stats = stat{}
 	}
 	stats.Clicked = true
 
-	tsms.Put(user, stats)
+	st.Put(user, stats)
 }
 
 func handlePixel(w http.ResponseWriter, r *http.Request) {
@@ -66,24 +62,19 @@ func handlePixel(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	stats, ok := tsms.Get(user)
+	stats, ok := st.Get(user)
 	if !ok {
 		stats = stat{}
 	}
 	stats.Seen = true
 
-	tsms.Put(user, stats)
+	st.Put(user, stats)
 }
 
 func handleStats(w http.ResponseWriter, _ *http.Request) {
-	stats := tsms.GetAll()
-	m, ok := stats.(map[string]stat)
-	if !ok {
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
+	stats := st.GetAll()
 
-	payload, err := json.Marshal(m)
+	payload, err := json.Marshal(stats)
 	if err != nil {
 		err = fmt.Errorf("can't marshal response: %w", err)
 		klog.Error(err)
