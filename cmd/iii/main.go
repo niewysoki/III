@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/rzetelskik/iii/pkg/cmd/sender"
 	"github.com/rzetelskik/iii/pkg/cmd/server"
-	"github.com/rzetelskik/iii/pkg/sender"
 	"github.com/spf13/cobra"
 	"k8s.io/klog/v2"
 	"os"
