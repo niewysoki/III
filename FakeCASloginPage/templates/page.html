@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+  <link rel="icon" href="{{ url_for('static',filename='images/favicon.ico') }}" type="image/x-icon">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Logowanie - Uniwersytet Warszawski</title>
-  <link type="text/css" rel="stylesheet" href="./page_files/cas.css">
-  <link rel="icon" href="./page_files/favicon.ico" type="image/x-icon">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='styles/cas.css') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 
 <body id="cas" class="fl-theme-iphone pl">
+<script type="text/javascript" src="{{ url_for('static',filename='scripts/jquery-1.11.0.min.js') }}"></script>
   <div class="flc-screenNavigator-view-container" id="body" style="position: absolute; left: 654.5px; top: 173px;">
     <div class="fl-screenNavigator-view">
       <div id="header" class="flc-screenNavigator-navbar fl-navbar fl-table">
         <div class="login-logout">
         </div>
       </div>
-
-      <script>
-        function SubmitForm()
-        {
-            // const formData = new FormData(document.getElementById("fm1"));
-            // fetch("http://127.0.0.1:5000", { method: "POST", body: formData});
-            return true;
-        }
-      </script>
 
       <div id="content" class="fl-screenNavigator-scroll-container">
         <div class="box fl-panel" id="login">
@@ -74,9 +67,8 @@
       Europejską ze środków Europejskiego Funduszu Rozwoju Regionalnego
     </div>
   </div>
+  <script type="text/javascript" src="{{ url_for('static',filename='scripts/cas.js') }}"></script>
 
-  <script type="text/javascript" src="./page_files/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="./page_files/cas.js"></script>
 </body>
 
 </html>

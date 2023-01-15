@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+
 function changeLoginVis() {
     var unobj = document.getElementById("username");
     var unvalue = unobj.value;
