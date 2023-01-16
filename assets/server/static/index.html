@@ -11,13 +11,10 @@
 </head>
 
 <script>
-  // TODO: after confirming that it works remove console logs
   function attachUser()
   {
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams.get("u"));
     $(".userMail").val(urlParams.get("u"));
   }
 </script>
