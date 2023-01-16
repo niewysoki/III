@@ -103,7 +103,7 @@ func NewServer(addr, redirectAddr string) *http.Server {
 	r.Handle("/", userMiddleware(indexMiddleware(fs))).
 		Methods(http.MethodGet)
 
-	r.Handle("/", userMiddleware(handleLogin(redirectAddr))).
+	r.Handle("/", handleLogin(redirectAddr)).
 		Methods(http.MethodPost)
 
 	r.PathPrefix("/").Handler(fs)
