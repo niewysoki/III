@@ -20,13 +20,13 @@ To start the server with malicious website you should follow instructions below.
 ```
 go run ./cmd/iii/main.go server --loglevel=4
 ```
-Default port is 8080.
+Default port is 8080. Do not close this terminal until the end, use new terminal in next instructions.
 The malicious webpage should be available at, but do not go there now:
 ```
 http://localhost:8080/
 ```
 ## Sending email
-Now to send an email, that we prepared use line below. 
+Now to send an email, that we prepared type line below into new command line. 
 ```
 go run ./cmd/iii/main.go sender --from=a.schubert@uw.edu.pl --to=test@test.com --username=9a346bcdbc771c --password=0d55fba525a381 --host=smtp.mailtrap.io --port=2525 --loglevel=4
 ```
@@ -36,12 +36,16 @@ go run ./cmd/iii/main.go sender --from=a.schubert@uw.edu.pl --to=test@test.com -
 ## Recieving email
 To see the mail visit https://mailtrap.io/signin and login to our account (login and password was send by mail). Next go to "Email Testing" > "My Inbox". 
 You should see a new email about (fake) registration deadline. This email was made to look just like emails from university.
+## Stats
+Type to command line to see status of this test:
+```
+curl localhost:8080/stats  -H "Content-Type: application-json" -s
+```
+It should print:
+```
+{"test@test.com":{"seen":true,"clicked":false,"logged_in":false}}
+```
+This is storage of our server, this means you saw the content of the email (when you opened it on the platform). Now you can click the link in mail and see fake USOS (be carefull it looks just like the login page). Now value "clicked" will change to true. If you log in to (fake) USOS your credentials will be shown in server terminal, value of "logged_in" will change to true and you will be redirected to normal USOS login page.
 
-
-
-
-
-
-
-Be carefull it looks just like the login page to USOS.
-
+## Closing
+Thanks for testing our solution you can now quit by pressing "Ctrl + C" in terminal with the server.
