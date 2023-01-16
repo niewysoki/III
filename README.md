@@ -8,7 +8,7 @@ Main Code Contributors:
 # GOAL
 Our goal is to create Minimal Working Project (MVP) of an app that will help people in terms of preventing phishing. This app can sent emails to choosen addresses that will contain a dangerous link. Later we can check if a person both clicked the mail and interacted with the malicious content of the webpage. 
 
-# Project consist of several parts
+# Instrucitons to test the app
 ## Golang
 To use our app you need to install 'go'. You can do this using this page:
 ```
