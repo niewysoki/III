@@ -77,7 +77,31 @@ func loginMiddleware(next http.Handler) http.Handler {
 			return
 		}
 
-		// TODO
+		user := r.FormValue("u")
+		if len(user) < 1 {
+			http.Error(w, "missing 'u' in form", http.StatusBadRequest)
+			return
+		}
+
+		username := r.FormValue("username")
+		if len(username) < 1 {
+			http.Error(w, "missing 'username' in form", http.StatusBadRequest)
+			return
+		}
+
+		password := r.FormValue("password")
+		if len(password) < 1 {
+			http.Error(w, "missing 'password' in form", http.StatusBadRequest)
+			return
+		}
+
+		stats, ok := st.Get(user)
+		if !ok {
+			stats = stat{}
+		}
+		stats.LoggedIn = true
+
+		st.Put(user, stats)
 
 		next.ServeHTTP(w, r)
 	})
