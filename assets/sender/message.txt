@@ -1,7 +1,7 @@
 Mime-Version: 1.0
 To: {{ .to }}
-Subject: TEST
-From: {{ .from }}
+Subject: [Students] [WAŻNE] Ostatni dzień rejestracji na przedmioty
+From: Aleksy Szubert {{ .from }}
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 
@@ -52,7 +52,7 @@ Content-Transfer-Encoding: quoted-printable
                                                     <td style="vertical-align: middle">
                                                         <h3 color="#000000"
                                                             style="margin: 0px;font-size: 14px;line-height: 22px;color: rgb(0,0,0);font-family: oscine,sans-serif">
-                                                            Błażej Wilkoławski</h3>
+                                                            Aleksy Szubert</h3>
                                                         <p color="#000000"
                                                             style="margin: 0px;color: rgb(0,0,0);font-size: 12px;line-height: 22px;font-family: muli,sans-serif">
                                                             Przewodniczący RSS</p><a href="https://www.facebook.com/mimuw" style="color: black" target="_blank"
