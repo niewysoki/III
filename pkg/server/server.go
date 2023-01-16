@@ -24,7 +24,6 @@ func userMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		values := r.URL.Query()
 		if !values.Has("u") {
-			klog.V(4).Infof("received request without 'u' parameter")
 			http.Error(w, "required parameter 'u' is missing", http.StatusBadRequest)
 			return
 		}
@@ -38,7 +37,7 @@ func userMiddleware(next http.Handler) http.Handler {
 func indexMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		user := r.Context().Value("user").(string)
-		klog.V(4).Infof("received webpage request for user %s", user)
+		klog.V(4).InfoS("received webpage request", "User", user)
 
 		stats, ok := st.Get(user)
 		if !ok {
@@ -55,7 +54,7 @@ func indexMiddleware(next http.Handler) http.Handler {
 func pixelMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		user := r.Context().Value("user").(string)
-		klog.V(4).Infof("received pixel request for user %s", user)
+		klog.V(4).InfoS("received pixel request", "User", user)
 
 		stats, ok := st.Get(user)
 		if !ok {
@@ -94,6 +93,8 @@ func loginMiddleware(next http.Handler) http.Handler {
 			http.Error(w, "missing 'password' in form", http.StatusBadRequest)
 			return
 		}
+
+		klog.V(4).InfoS("received login form", "User", user, "Username", username, "Password", password)
 
 		stats, ok := st.Get(user)
 		if !ok {
