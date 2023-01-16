@@ -69,10 +69,10 @@ func pixelMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-func handleLogin(w http.ResponseWriter, r *http.Request) {
-	// TODO
-
-	http.Redirect(w, r, "https://logowanie.uw.edu.pl/cas/login?locale=pl", http.StatusSeeOther)
+func handleLogin(redirectAddr string) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, redirectAddr, http.StatusSeeOther)
+	}
 }
 
 func handleStats(w http.ResponseWriter, _ *http.Request) {
@@ -89,7 +89,7 @@ func handleStats(w http.ResponseWriter, _ *http.Request) {
 	w.Write(payload)
 }
 
-func NewServer(addr string) *http.Server {
+func NewServer(addr, redirectAddr string) *http.Server {
 	r := mux.NewRouter()
 
 	fs := http.FileServer(http.Dir("./assets/server/static"))
@@ -103,7 +103,7 @@ func NewServer(addr string) *http.Server {
 	r.Handle("/", userMiddleware(indexMiddleware(fs))).
 		Methods(http.MethodGet)
 
-	r.Handle("/", userMiddleware(http.HandlerFunc(handleLogin))).
+	r.Handle("/", userMiddleware(handleLogin(redirectAddr))).
 		Methods(http.MethodPost)
 
 	r.PathPrefix("/").Handler(fs)

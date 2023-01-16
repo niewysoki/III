@@ -17,12 +17,14 @@ import (
 )
 
 type serverOptions struct {
-	addr string
+	addr         string
+	redirectAddr string
 }
 
 func newServerOptions() *serverOptions {
 	return &serverOptions{
-		addr: "localhost:8080",
+		addr:         "localhost:8080",
+		redirectAddr: "https://logowanie.uw.edu.pl/cas/login?locale=pl",
 	}
 }
 
@@ -56,6 +58,7 @@ func NewServerCommand() *cobra.Command {
 	}
 
 	cmd.Flags().StringVar(&o.addr, "address", o.addr, "Address to listen on")
+	cmd.Flags().StringVar(&o.redirectAddr, "redirect-address", o.redirectAddr, "Address to redirect to on login")
 
 	return cmd
 }
@@ -92,7 +95,7 @@ func (o *serverOptions) Run(cmd *cobra.Command) error {
 	var wg sync.WaitGroup
 	defer wg.Wait()
 
-	server := iserver.NewServer(o.addr)
+	server := iserver.NewServer(o.addr, o.redirectAddr)
 
 	wg.Add(1)
 	go func() {
