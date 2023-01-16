@@ -103,14 +103,10 @@ func NewServer(addr string) *http.Server {
 	r.Handle("/", userMiddleware(indexMiddleware(fs))).
 		Methods(http.MethodGet)
 
-	r.HandleFunc("/", handleLogin).
+	r.Handle("/", userMiddleware(http.HandlerFunc(handleLogin))).
 		Methods(http.MethodPost)
 
 	r.PathPrefix("/").Handler(fs)
-
-	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		klog.V(4).InfoS("request received", "request", r.URL.Path)
-	})
 
 	return &http.Server{
 		Addr:    addr,
