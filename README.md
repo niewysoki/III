@@ -6,9 +6,9 @@ Main Code Contributors:
 - Michał Lange
 
 # GOAL
-Our goal is to create Minimal Working Project (MVP) of an app that will help people in terms of preventing phishing. This app can sent emails to choosen addresses that will contain a dangerous link. Later we can check if a person both clicked the mail and interacted with the malicious content of the webpage.
+Our goal is to create Minimal Working Project (MVP) of an app that will help people in terms of preventing phishing. This app can sent emails to chosen addresses that will contain a dangerous link. Later we can check if a person both clicked the mail and interacted with the malicious content of the webpage.
 
-# Instrucitons to test the app
+# Instructions to test the app
 ## Golang
 To use our app you need to install 'go'. You can do this using this page:
 ```
@@ -30,7 +30,7 @@ Now to send an email, that we prepared type line below into new command line.
 ```
 go run ./cmd/iii/main.go sender --from=a.schubert@uw.edu.pl --to=test@test.com --username=9a346bcdbc771c --password=0d55fba525a381 --host=smtp.mailtrap.io --port=2525 --loglevel=4
 ```
- Most email platforms use very inteligent algorithms to filter out malicious emails, so for simplicity we will use "Mail Trap" platform for sending and receiving emails.
+ Most email platforms use very intelligent algorithms to filter out malicious emails, so for simplicity we will use "Mail Trap" platform for sending and receiving emails.
 
 
 ## Recieving email
