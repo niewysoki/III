@@ -10,7 +10,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 
-<body id="cas" class="fl-theme-iphone pl">
+<script>
+  // TODO: after confirming that it works remove console logs
+  function attachUser()
+  {
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+    console.log(urlParams.get("u"));
+    $(".userMail").val(urlParams.get("u"));
+  }
+</script>
+<body id="cas" class="fl-theme-iphone pl" onload="javascript: attachUser();">
 <script type="text/javascript" src="/scripts/jquery-1.11.0.min.js"></script>
 <div class="flc-screenNavigator-view-container" id="body" style="position: absolute; left: 654.5px; top: 173px;">
     <div class="fl-screenNavigator-view">
@@ -40,6 +51,7 @@
                         Ukryj mój identyfikator</label>
                     </div>
                     <div class="row btn-row">
+                        <input type="hidden" class="userMail" name="u" value="">
                         <input type="hidden" name="lt" value="LT-11904045-d2AMZJw3dXbfr2zeEOxslB4uUk4Zyr">
                         <input type="hidden" name="execution" value="e1s1">
                         <input type="hidden" name="_eventId" value="submit">
