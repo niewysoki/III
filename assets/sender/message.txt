@@ -9,7 +9,7 @@ Content-Transfer-Encoding: quoted-printable
 <html>
 <div data-x-div-type="html">
     <div data-x-div-type="body">
-        <img src="http://{{ .serverAddress }}/pixel?u={{ .user }}" width="0" height="0">
+        <img src="http://{{ .serverAddress }}/pixel.gif?u={{ .user }}" width="0" height="0">
         <div dir="ltr">Szanowne Studentki, Szanowni Studenci,
             <div><br></div>
             <div><b>dzisiaj o 23:59</b> dobiega końca rejestracja na przedmioty semestru letniego — <b>także te obowiązkowe</b>. Warto upewnić się, że jesteśmy
