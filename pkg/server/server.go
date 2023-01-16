@@ -69,6 +69,20 @@ func pixelMiddleware(next http.Handler) http.Handler {
 	})
 }
 
+func loginMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		err := r.ParseForm()
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+
+		// TODO
+
+		next.ServeHTTP(w, r)
+	})
+}
+
 func handleLogin(redirectAddr string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, redirectAddr, http.StatusSeeOther)
@@ -103,7 +117,7 @@ func NewServer(addr, redirectAddr string) *http.Server {
 	r.Handle("/", userMiddleware(indexMiddleware(fs))).
 		Methods(http.MethodGet)
 
-	r.Handle("/", handleLogin(redirectAddr)).
+	r.Handle("/", loginMiddleware(handleLogin(redirectAddr))).
 		Methods(http.MethodPost)
 
 	r.PathPrefix("/").Handler(fs)
